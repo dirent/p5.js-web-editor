@@ -277,8 +277,6 @@ class IDEView extends React.Component {
               setSoundOutput={this.props.setSoundOutput}
               theme={this.props.preferences.theme}
               setTheme={this.props.setTheme}
-              serveSecure={this.props.project.serveSecure}
-              setServeSecure={this.props.setServeSecure}
             />
           </Overlay>
         }
@@ -296,11 +294,7 @@ class IDEView extends React.Component {
               setSelectedFile={this.props.setSelectedFile}
               newFile={this.props.newFile}
               isExpanded={this.props.ide.sidebarIsExpanded}
-              showFileOptions={this.props.showFileOptions}
-              hideFileOptions={this.props.hideFileOptions}
               deleteFile={this.props.deleteFile}
-              showEditFileName={this.props.showEditFileName}
-              hideEditFileName={this.props.hideEditFileName}
               updateFileName={this.props.updateFileName}
               projectOptionsVisible={this.props.ide.projectOptionsVisible}
               openProjectOptions={this.props.openProjectOptions}
@@ -361,6 +355,7 @@ class IDEView extends React.Component {
                   provideController={(ctl) => { this.cmController = ctl; }}
                 />
                 <Console
+                  fontSize={this.props.preferences.fontSize}
                   consoleEvents={this.props.console}
                   isExpanded={this.props.ide.consoleIsExpanded}
                   expandConsole={this.props.expandConsole}
@@ -560,7 +555,6 @@ IDEView.propTypes = {
   project: PropTypes.shape({
     id: PropTypes.string,
     name: PropTypes.string.isRequired,
-    serveSecure: PropTypes.bool,
     owner: PropTypes.shape({
       username: PropTypes.string,
       id: PropTypes.string
@@ -568,7 +562,6 @@ IDEView.propTypes = {
     updatedAt: PropTypes.string
   }).isRequired,
   setProjectName: PropTypes.func.isRequired,
-  setServeSecure: PropTypes.func.isRequired,
   openPreferences: PropTypes.func.isRequired,
   editorAccessibility: PropTypes.shape({
     lintMessages: PropTypes.array.isRequired,
@@ -624,11 +617,7 @@ IDEView.propTypes = {
   cloneProject: PropTypes.func.isRequired,
   expandConsole: PropTypes.func.isRequired,
   collapseConsole: PropTypes.func.isRequired,
-  showFileOptions: PropTypes.func.isRequired,
-  hideFileOptions: PropTypes.func.isRequired,
   deleteFile: PropTypes.func.isRequired,
-  showEditFileName: PropTypes.func.isRequired,
-  hideEditFileName: PropTypes.func.isRequired,
   updateFileName: PropTypes.func.isRequired,
   showEditProjectName: PropTypes.func.isRequired,
   hideEditProjectName: PropTypes.func.isRequired,
